@@ -15,7 +15,7 @@ const CommandSchema = mongo.Schema({
 
 const Command = mongo.model("Command", CommandSchema); 
 
-app.use(express.static(__dirname + '../react-ui/build')); 
+app.use(express.static(path.resolve(__dirname, '../react-ui/build'))); 
 
 app.get('/api', (req, res) => {
     Command.find({}, (err, result) => {
@@ -25,7 +25,7 @@ app.get('/api', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-    res.sendFile(__dirname + '../react-ui/build/index.html'); 
+    res.sendFile(path.resolve(__dirname, '../react-ui/build'));
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
