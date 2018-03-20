@@ -24,4 +24,8 @@ app.get('/api', (req, res) => {
     });
 });
 
+app.get('*', (req, res) => {
+    res.sendFile(__dirname + '../react-ui/build/index.html'); 
+});
+
 app.listen(port, () => console.log(`Listening on port ${port}`));
