@@ -1,5 +1,6 @@
 const express       = require('express'),
-      mongo         = require('mongoose');
+      mongo         = require('mongoose'),
+      path          = require('path');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -14,11 +15,7 @@ const CommandSchema = mongo.Schema({
 
 const Command = mongo.model("Command", CommandSchema); 
 
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000'); 
-  res.setHeader('Access-Control-Allow-Methods', 'GET');
-  next(); 
-});
+app.use(express.static(__dirname + '../react-ui/build')); 
 
 app.get('/api', (req, res) => {
     Command.find({}, (err, result) => {
