@@ -1,0 +1,23 @@
+{
+  "name": "waifubot-web-back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "client": "cd react-ui && npm start",
+    "dev-server": "cd server && nodemon index.js",
+    "dev": "concurrently --kill-others-on-fail \"npm run dev-server\" \"npm run client\"",
+    "start": "node server",
+    "heroku-postbuild": "cd react-ui/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+  },
+  "cacheDirectories": [
+    "node_modules",
+    "react-ui/node_modules"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "mongoose": "^5.0.11"
+  }
+}
